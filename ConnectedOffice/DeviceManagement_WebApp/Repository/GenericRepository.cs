@@ -1,21 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using DeviceManagement_WebApp.Data;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace DeviceManagement_WebApp.Repository
 {
-    public class  GenericRepository<T> :IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly ConnectedOffice _context;
+        protected readonly ConnectedOfficeContext _context;
+        
 
-        public GenericRepository(ConnectedOffice context)
+        public GenericRepository(ConnectedOfficeContext context)
         {
             _context = context;
         }
 
         public void Add(T entity)
         {
-            _context.Set<T>().add(entity);
+            _context.Set<T>().Add(entity);
+        }
+
+        public void add(T entity)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddRange(IEnumerable<T> entities)

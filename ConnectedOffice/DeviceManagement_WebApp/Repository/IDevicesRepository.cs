@@ -1,6 +1,12 @@
-﻿namespace DeviceManagement_WebApp.Repository
+﻿using DeviceManagement_WebApp.Models;
+
+namespace DeviceManagement_WebApp.Repository
 {
-    public interface IDevicesRepository
+    public interface IDevicesRepository : IGenericRepository<Device>
     {
+        Device GetMostRecentDevice();
+
+        //call a method for the update
+        
     }
 }

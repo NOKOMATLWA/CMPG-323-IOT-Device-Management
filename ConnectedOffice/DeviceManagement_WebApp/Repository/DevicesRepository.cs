@@ -1,6 +1,20 @@
-﻿namespace DeviceManagement_WebApp.Repository
+﻿using System.Linq;
+using DeviceManagement_WebApp.Data;
+using DeviceManagement_WebApp.Models;
+
+namespace DeviceManagement_WebApp.Repository
 {
-    public class DevicesRepository
+    public class DevicesRepository : GenericRepository<Device>, IDevicesRepository
     {
+       
+        public DevicesRepository(ConnectedOfficeContext context) : base(context)
+        {
+        }
+
+
+        public Device GetMostRecentDevice()
+        {
+            return _context.Device.OrderByDescending(Device => Device.DateCreated).FirstOrDefault();
+        }
     }
 }

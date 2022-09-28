@@ -19,7 +19,7 @@ namespace DeviceManagement_WebApp.Controllers
             _context = context;
         }
 
-        // GET: Zones
+        // GET: Indicates the Zones in a table 
         public async Task<IActionResult> Index()
         {
             return View(await _context.Zone.ToListAsync());
